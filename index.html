@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sorry Jaan ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            overflow: hidden;
+            font-family: Arial, Helvetica, sans-serif;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff0080,
+                    #7928ca,
+                    #00c6ff,
+                    #ff0080
+                );
+
+            background-size: 400% 400%;
+            animation: backgroundAnimation 10s ease infinite;
+
+            position: relative;
+        }
+
+        @keyframes backgroundAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Dark overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.22);
+            z-index: 1;
+        }
+
+        /* =================================
+           FALLING SORRY
+        ================================= */
+
+        #fallingContainer {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .falling-sorry {
+            position: absolute;
+            top: -80px;
+
+            color: white;
+            font-weight: bold;
+
+            text-shadow:
+                0 0 5px white,
+                0 0 10px #ff00cc,
+                0 0 20px #ff00cc;
+
+            white-space: nowrap;
+
+            animation-name: fall;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes fall {
+            0% {
+                transform:
+                    translateY(-100px)
+                    rotate(0deg);
+
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 0.9;
+            }
+
+            100% {
+                transform:
+                    translateY(110vh)
+                    rotate(360deg);
+
+                opacity: 0;
+            }
+        }
+
+        /* =================================
+           MAIN CARD
+        ================================= */
+
+        .card {
+            position: relative;
+            z-index: 5;
+
+            width: min(90%, 560px);
+
+            padding: 45px 25px;
+
+            text-align: center;
+
+            background: rgba(255, 255, 255, 0.16);
+
+            border: 2px solid rgba(255, 255, 255, 0.4);
+
+            border-radius: 30px;
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            box-shadow:
+                0 0 25px rgba(255, 255, 255, 0.35),
+                0 0 70px rgba(255, 0, 150, 0.35);
+
+            animation: cardAnimation 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes cardAnimation {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(-8px);
+            }
+        }
+
+        /* =================================
+           HEART
+        ================================= */
+
+        .main-heart {
+            font-size: 75px;
+
+            animation: heartbeat 1.2s infinite;
+
+            filter:
+                drop-shadow(0 0 10px red)
+                drop-shadow(0 0 25px #ff0080);
+        }
+
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+
+            20% {
+                transform: scale(1.15);
+            }
+
+            40% {
+                transform: scale(1);
+            }
+
+            60% {
+                transform: scale(1.15);
+            }
+
+            80% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* =================================
+           TITLE
+        ================================= */
+
+        h1 {
+            margin-top: 10px;
+
+            font-size: clamp(48px, 12vw, 82px);
+
+            font-weight: 900;
+
+            color: white;
+
+            text-shadow:
+                0 0 5px white,
+                0 0 10px #ff0080,
+                0 0 20px #ff0080,
+                0 0 40px #ff0080;
+
+            animation: titleGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            from {
+                transform: scale(1);
+                text-shadow:
+                    0 0 5px white,
+                    0 0 10px #ff0080;
+            }
+
+            to {
+                transform: scale(1.04);
+                text-shadow:
+                    0 0 10px white,
+                    0 0 25px #ff0080,
+                    0 0 50px #ff0080;
+            }
+        }
+
+        /* =================================
+           MESSAGE
+        ================================= */
+
+        .message {
+            margin-top: 20px;
+
+            color: white;
+
+            font-size: 21px;
+
+            line-height: 1.7;
+
+            text-shadow:
+                0 2px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        .message .yellow {
+            color: #fff000;
+            font-weight: bold;
+        }
+
+        .message .pink {
+            color: #ffd1eb;
+            font-weight: bold;
+        }
+
+        /* =================================
+           MUSIC BUTTON
+        ================================= */
+
+        #musicBtn {
+            margin-top: 28px;
+
+            padding: 14px 30px;
+
+            border: none;
+            border-radius: 50px;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    45deg,
+                    #ff0066,
+                    #ff4d00
+                );
+
+            font-size: 17px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 0 15px rgba(255, 255, 255, 0.5);
+
+            transition: 0.3s;
+        }
+
+        #musicBtn:hover {
+            transform: scale(1.08);
+
+            box-shadow:
+                0 0 30px rgba(255, 255, 255, 0.8);
+        }
+
+        /* =================================
+           TAP SCREEN
+        ================================= */
+
+        #startScreen {
+            position: fixed;
+            inset: 0;
+
+            z-index: 100;
+
+            display: none;
+
+            justify-content: center;
+            align-items: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff0080,
+                    #7928ca
+                );
+
+            text-align: center;
+
+            cursor: pointer;
+        }
+
+        #startBox {
+            color: white;
+
+            padding: 30px;
+        }
+
+        #startBox .big-heart {
+            font-size: 80px;
+
+            animation: heartbeat 1.2s infinite;
+        }
+
+        #startBox h2 {
+            margin-top: 15px;
+
+            font-size: 35px;
+
+            text-shadow:
+                0 0 10px white,
+                0 0 20px #ff00cc;
+        }
+
+        #startBox p {
+            margin-top: 10px;
+
+            font-size: 17px;
+        }
+
+        /* =================================
+           FLOATING HEARTS
+        ================================= */
+
+        .floating-heart {
+            position: fixed;
+
+            bottom: -60px;
+
+            z-index: 3;
+
+            pointer-events: none;
+
+            font-size: 25px;
+
+            animation:
+                floatHeart linear forwards;
+
+            text-shadow:
+                0 0 10px #ff0080;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform:
+                    translateY(0)
+                    scale(1);
+
+                opacity: 1;
+            }
+
+            100% {
+                transform:
+                    translateY(-110vh)
+                    scale(1.5);
+
+                opacity: 0;
+            }
+        }
+
+        /* =================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 600px) {
+
+            .card {
+                width: 90%;
+                padding: 38px 18px;
+            }
+
+            .main-heart {
+                font-size: 60px;
+            }
+
+            .message {
+                font-size: 18px;
+            }
+
+            .falling-sorry {
+                font-size: 16px;
+            }
+
+            #musicBtn {
+                font-size: 16px;
+                padding: 13px 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Falling SORRY -->
+    <div id="fallingContainer"></div>
+
+
+    <!-- Main Website -->
+    <div class="card">
+
+        <div class="main-heart">
+            ❤️
+        </div>
+
+        <h1>
+            Sorry Jaan
+        </h1>
+
+        <p class="message">
+            Mujhse galti ho gayi... 🥺❤️
+            <br>
+
+            <span class="yellow">
+                Please mujhe maaf kar dijiye
+            </span>
+
+            <br>
+
+            <span class="pink">
+                Aap mere liye bahut special ho 💖
+            </span>
+
+            <br>
+
+            I am really sorry jaan... 🥺
+        </p>
+
+        <button id="musicBtn">
+            🎵 Music ON
+        </button>
+
+    </div>
+
+
+    <!-- =================================
+         MUSIC
+    ================================= -->
+
+    <audio
+        id="music"
+        autoplay
+        loop
+        preload="auto"
+        playsinline>
+
+        <source
+            src="sorry.mp3"
+            type="audio/mpeg">
+
+    </audio>
+
+
+    <!-- =================================
+         AUTOPLAY FALLBACK SCREEN
+    ================================= -->
+
+    <div id="startScreen">
+
+        <div id="startBox">
+
+            <div class="big-heart">
+                ❤️
+            </div>
+
+            <h2>
+                Sorry Jaan 🥺
+            </h2>
+
+            <p>
+                Tap anywhere to start music 🎵
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        /* =================================
+           ELEMENTS
+        ================================= */
+
+        const music =
+            document.getElementById("music");
+
+        const musicBtn =
+            document.getElementById("musicBtn");
+
+        const startScreen =
+            document.getElementById("startScreen");
+
+        const fallingContainer =
+            document.getElementById("fallingContainer");
+
+
+        /* =================================
+           MUSIC SETTINGS
+        ================================= */
+
+        music.loop = true;
+
+        music.volume = 1.0;
+
+
+        /* =================================
+           TRY AUTOPLAY
+        ================================= */
+
+        async function startMusic() {
+
+            try {
+
+                await music.play();
+
+                // Music successfully started
+                startScreen.style.display = "none";
+
+                musicBtn.innerHTML =
+                    "⏸️ Music ON";
+
+            }
+
+            catch (error) {
+
+                /*
+                    Browser autoplay policy
+                    blocked sound.
+                */
+
+                startScreen.style.display =
+                    "flex";
+
+                musicBtn.innerHTML =
+                    "🎵 Start Music";
+            }
+        }
+
+
+        /* =================================
+           PAGE LOAD
+        ================================= */
+
+        window.addEventListener(
+            "load",
+            function () {
+
+                // First autoplay attempt
+                startMusic();
+
+                // Additional attempts
+                setTimeout(
+                    startMusic,
+                    500
+                );
+
+                setTimeout(
+                    startMusic,
+                    1500
+                );
+
+            }
+        );
+
+
+        /* =================================
+           TAP ANYWHERE TO START
+        ================================= */
+
+        function userStartMusic() {
+
+            music.volume = 1.0;
+
+            music.play()
+                .then(() => {
+
+                    startScreen.style.display =
+                        "none";
+
+                    musicBtn.innerHTML =
+                        "⏸️ Music ON";
+
+                })
+                .catch(() => {
+
+                    console.log(
+                        "Music could not start."
+                    );
+
+                });
+        }
+
+
+        startScreen.addEventListener(
+            "click",
+            userStartMusic
+        );
+
+
+        /* =================================
+           MUSIC BUTTON
+        ================================= */
+
+        musicBtn.addEventListener(
+            "click",
+            function () {
+
+                if (music.paused) {
+
+                    music.play()
+                        .then(() => {
+
+                            musicBtn.innerHTML =
+                                "⏸️ Music ON";
+
+                        });
+
+                }
+
+                else {
+
+                    music.pause();
+
+                    musicBtn.innerHTML =
+                        "🎵 Music OFF";
+                }
+
+            }
+        );
+
+
+        /* =================================
+           FALLING SORRY
+        ================================= */
+
+        function createSorry() {
+
+            const element =
+                document.createElement("div");
+
+            element.className =
+                "falling-sorry";
+
+            element.innerHTML =
+                "SORRY ❤️";
+
+            // Random horizontal position
+            element.style.left =
+                Math.random() * 100 + "%";
+
+            // Random font size
+            const fontSize =
+                Math.random() * 18 + 15;
+
+            element.style.fontSize =
+                fontSize + "px";
+
+            // Random falling speed
+            const duration =
+                Math.random() * 4 + 4;
+
+            element.style.animationDuration =
+                duration + "s";
+
+            fallingContainer.appendChild(
+                element
+            );
+
+            // Delete after animation
+            setTimeout(
+                function () {
+
+                    element.remove();
+
+                },
+                (duration + 1) * 1000
+            );
+        }
+
+
+        // Continuously create falling SORRY
+        setInterval(
+            createSorry,
+            300
+        );
+
+
+        // Initial falling SORRY
+        for (
+            let i = 0;
+            i < 15;
+            i++
+        ) {
+
+            setTimeout(
+                createSorry,
+                i * 150
+            );
+
+        }
+
+
+        /* =================================
+           FLOATING HEARTS
+        ================================= */
+
+        function createFloatingHeart() {
+
+            const heart =
+                document.createElement("div");
+
+            heart.className =
+                "floating-heart";
+
+            const hearts = [
+                "❤️",
+                "💖",
+                "💕",
+                "💗",
+                "💓"
+            ];
+
+            heart.innerHTML =
+                hearts[
+                    Math.floor(
+                        Math.random() *
+                        hearts.length
+                    )
+                ];
+
+            heart.style.left =
+                Math.random() * 100 + "%";
+
+            heart.style.fontSize =
+                (
+                    Math.random() * 25 + 15
+                ) + "px";
+
+            const duration =
+                Math.random() * 4 + 4;
+
+            heart.style.animationDuration =
+                duration + "s";
+
+            document.body.appendChild(
+                heart
+            );
+
+            setTimeout(
+                function () {
+
+                    heart.remove();
+
+                },
+                duration * 1000
+            );
+        }
+
+
+        setInterval(
+            createFloatingHeart,
+            700
+        );
+
+
+        /* =================================
+           KEEP MUSIC LOOPING
+        ================================= */
+
+        music.addEventListener(
+            "ended",
+            function () {
+
+                music.currentTime = 0;
+
+                music.play()
+                    .catch(() => {});
+
+            }
+        );
+
+
+        /* =================================
+           IF MUSIC STOPS UNEXPECTEDLY
+        ================================= */
+
+        document.addEventListener(
+            "visibilitychange",
+            function () {
+
+                if (
+                    document.visibilityState ===
+                    "visible"
+                ) {
+
+                    if (music.paused) {
+
+                        music.play()
+                            .catch(() => {
+
+                                // Browser may require
+                                // user interaction.
+
+                            });
+
+                    }
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>
